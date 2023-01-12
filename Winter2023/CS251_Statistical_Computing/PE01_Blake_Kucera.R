@@ -2,7 +2,7 @@
 # Date  : January 12th 2023
 # Class : CS251
 
-#Assignment: PE01
+# Assignment: PE01
 #   1 - Using filters, create a vector v1 that contains the elements in v that are either a multiple of 3 or 5. v1 should look like this 
 #       (3, 5, 6, 9, 10, 12, 15, ..., 30). 
 #   2 - Create another vector v2 by selecting elements in v whose values are greater than 15. v2 should look like this (16, 17, 18, ..., 30) 
