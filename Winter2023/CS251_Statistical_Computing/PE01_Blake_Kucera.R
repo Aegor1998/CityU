@@ -13,37 +13,37 @@
 #   6 - Print the minimum value in cv_all
 
 # Create the base vector
-v <- 1:30
+v <- 1:30;
 # Create the vector with multiples of 3 and 5 and contained in vector v
-v1 <- c(v[is.integer(v / 3] = TRUE ) | v[is.integer(v / 5] = TRUE ))
+v1 <- v[(v %%3) == 0 | (v %%5) == 0]
 v1 <- unique(v1) #removes duplication (test is this is needed)
 # Create the vecotr whoes values are greater than 15 and contained in vector v
-v2 <- c(v[v > 15])
+v2 <- v[v > 15];
 # Printing the Vectors
-"Vector v: "  + v
-"Vector v1: " + v1
-"Vector v2: " + v2
+cat("Vector v: ",  v,  "\n");
+cat("Vector v1: ", v1, "\n");
+cat("Vector v2: ", v2, "\n");
 
 
 # Calculate the Mean of each vector
-v_mean  <- mean(v)
-v1_mean <- mean(v1)
-v2_mean <- mean(v2)
+v_mean  <- mean(v);
+v1_mean <- mean(v1);
+v2_mean <- mean(v2);
 # Print the Mean of each Vector
-"Mean of Vector v: "  + v_mean
-"Mean of Vector v1: " + v1_mean
-"Mean of Vector v2: " + v2_mean
+cat("Mean of Vector v:  ", v_mean,  "\n");
+cat("Mean of Vector v1: ", v1_mean, "\n");
+cat("Mean of Vector v2: ", v2_mean, "\n");
 
 # Calculate the Coefficient of Variation of each Vector
-v_cv  <- sd(v)/v_mean
-v1_cv <- sd(v1)/v1_mean
-v2_cv <- sd(v2)/v2_mean
+v_cv  <- sd(v)/v_mean;
+v1_cv <- sd(v1)/v1_mean;
+v2_cv <- sd(v2)/v2_mean;
 # Print the Coefficient of Variation of each Vector
-"Coefficient of Variation of Vector v: "  + v_cv
-"Coefficient of Variation of Vector v1: " + v1_cv
-"Coefficient of Variation of Vector v2: " + v2_cv
+cat("Coefficient of Variation of Vector v: ", v_cv, "\n");
+cat("Coefficient of Variation of Vector v1: ", v1_cv, "\n");
+cat("Coefficient of Variation of Vector v2: ", v2_cv, "\n");
 
 # Create cv_all
-cv_all <- c(v_cv, v1_cv, v2_cv)
+cv_all <- c(v_cv, v1_cv, v2_cv);
 # Print the lowest Coefficient of Variation between all Vectors
-"The lowest Coefficient of Variation is " + min(cv_all)
+cat("The lowest Coefficient of Variation is ", min(cv_all), "\n");
