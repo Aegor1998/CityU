@@ -15,12 +15,12 @@
 # Create the base vector
 v <- 1:30
 # Create the vector with multiples of 3 and 5 and contained in vector v
-v1 <- c(v[is.integer(v / 3] = TRUE ) | v[is.integer(v / 5] = TRUE ))
+v1 <- v[is.integer(v / 3) == TRUE | is.integer(v / 5) == TRUE];
 v1 <- unique(v1) #removes duplication (test is this is needed)
 # Create the vecotr whoes values are greater than 15 and contained in vector v
-v2 <- c(v[v > 15])
+v2 <- v[v > 15]
 # Printing the Vectors
-"Vector v: "  + v
+print("Vector v " + v)
 "Vector v1: " + v1
 "Vector v2: " + v2
 
