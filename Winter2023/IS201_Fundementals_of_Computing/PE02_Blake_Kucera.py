@@ -48,7 +48,7 @@ def userAge():
     print("\nYou are a ", category, ".\n")
     return age
 
-
+# Satisfies Part 2
 def getTicketPrice(age):
     ticket = None
     if age > 12:
@@ -64,9 +64,28 @@ def ticketInfo(age):
     price = getTicketPrice(age)
     print("\nGive that you are ", age, " your ticket price is $", price, "\n")
 
+# Satisfies Part 3
+def countToTwentyFive(counter = 0):
+    while counter <= 25:
+        userInput = input("Please input a number: ")
+
+        if not str.isdigit(userInput):
+            print("Please input an integer.\n")
+            countToTwentyFive(counter)
+
+        counter += int(userInput)
+        print("Current Value: ", counter)
+
 
 def main():
+    print("Part 1: Person's Stage of Life")
     age = userAge()
+
+    print("Part 2: Cost of a ticket")
+    print("Your ticket costs $", getTicketPrice(age), ".")
+
+    print("Part 3: Add user input")
+    countToTwentyFive()
 
     return 0
 
