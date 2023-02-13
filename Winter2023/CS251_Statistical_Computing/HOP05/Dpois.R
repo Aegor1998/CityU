@@ -3,7 +3,7 @@
 # Assignment: HOP05
 
 #can't get to show a graph
-print(dpois(6, 4.5))
+print(dpois(6, 5))
 
 library(dplyr)
 library(ggplot2)
