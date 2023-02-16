@@ -26,7 +26,7 @@ find_min <- function(x) {
 }
 
 
-
+# This script expects that the .cvs file will be in the smae folder
 # CVS name Traffic_Crashes_-_Crashes.csv
 FILE <- read.csv("Traffic_Crashes_-_Crashes.csv")
 # Vector for crash related factors
