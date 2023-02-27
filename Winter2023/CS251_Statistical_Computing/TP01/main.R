@@ -40,7 +40,6 @@ fix_table_CON <- function(dataFrame){
                              Event  = c("", "", ""),
                              Number = c(0, 0, 0))
   rowNames <- rownames(dataFrame)
-  number  <- NULL
   counter <- 1
 
   for (i in rowNames) {
@@ -59,7 +58,9 @@ fix_table_CON <- function(dataFrame){
 # CVS name Traffic_Crashes_-_Crashes.csv
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
-FILE <- read.csv("Traffic_Crashes_-_Crashes.csv")
+FILE <-fread(file = "Traffic_Crashes_-_Crashes.csv", select = c("ROADWAY_SURFACE_COND",
+             "LIGHTING_CONDITION", "WEATHER_CONDITION", "INJURIES_FATAL"))
+
 # Vector for crash related factors
 road_Condition <- FILE$ROADWAY_SURFACE_COND  # ROADWAY_SURFACE_COND
 road_Condition <- cleanData(road_Condition)
