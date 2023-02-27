@@ -36,9 +36,9 @@ cleanData <- function(x) {
 
 fix_table_CON <- function(dataFrame){
   colnames(dataFrame)[1] <- "Number"
-  newDataFrame <- data.frame(Type   = c("", "", ""),
-                             Event  = c("", "", ""),
-                             Number = c(0, 0, 0))
+  newDataFrame <- data.frame(Type   = c("", "", "", ""),
+                             Event  = c("", "", "", ""),
+                             Number = c(0, 0, 0, 0))
   rowNames <- rownames(dataFrame)
   counter <- 1
 
@@ -59,7 +59,7 @@ fix_table_CON <- function(dataFrame){
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 FILE <-fread(file = "Traffic_Crashes_-_Crashes.csv", select = c("ROADWAY_SURFACE_COND",
-             "LIGHTING_CONDITION", "WEATHER_CONDITION", "INJURIES_FATAL"))
+             "LIGHTING_CONDITION", "WEATHER_CONDITION", "INJURIES_FATAL", "PRIM_CONTRIBUTORY_CAUSE"))
 
 # Vector for crash related factors
 road_Condition <- FILE$ROADWAY_SURFACE_COND  # ROADWAY_SURFACE_COND
@@ -70,6 +70,11 @@ light_Conditions <- cleanData(light_Conditions)
 
 weather_Conditions <- FILE$WEATHER_CONDITION     # WEATHER_CONDITION
 weather_Conditions <- cleanData(weather_Conditions)
+
+cause_Conditions <- (FILE$PRIM_CONTRIBUTORY_CAUSE[FILE$PRIM_CONTRIBUTORY_CAUSE
+                                                    != "UNABLE TO DETERMINE"])
+cause_Conditions <- cleanData(cause_Conditions)
+
 
 # Variable for Population of Seattle and Number of Crashes
 Number_Of_Crashes   <- 690763       # 01/2016 - 12/2022
@@ -84,11 +89,13 @@ list_Of_Fatalities <- cleanData(list_Of_Fatalities)
 # Goal 1: Conditions
 MAX_Condition <- data.frame(c(road = find_max(road_Condition),
                               light = find_max(light_Conditions),
-                              weather = find_max(weather_Conditions)))
+                              weather = find_max(weather_Conditions),
+                              cause = find_max(cause_Conditions)))
 
 MIN_Condition <- data.frame(c(road = find_min(road_Condition),
                               light = find_min(light_Conditions),
-                              weather = find_min(weather_Conditions)))
+                              weather = find_min(weather_Conditions),
+                              cause = find_max(cause_Conditions)))
 
 MAX_Condition <- fix_table_CON(MAX_Condition)
 MIN_Condition <- fix_table_CON(MIN_Condition)
@@ -105,3 +112,5 @@ ggplot(data = MIN_Condition, aes(x=Event, y=Number, fill=Event)) +
     theme(axis.text.x=element_blank()) +
   ggtitle("Least likely conditions")
 
+
+# Making graphs for Goal 2
