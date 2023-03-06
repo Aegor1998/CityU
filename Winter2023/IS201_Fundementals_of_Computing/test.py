@@ -1,22 +1,14 @@
+class A:
 
-class Dog:
-
-    def walk(self):
-
-        return "*walking*"
-
-    def speak(self):
-
-        return "Woof!"
+    def __init__(self, i=0):
+        self.i = i
 
 
+class B(A):
 
-class JackRussellTerrier(Dog):
+    def __init__(self, j=1):
+        self.j = j
 
-    def speak(self):
 
-        return "Arff!"
-
-bobo = JackRussellTerrier()
-
-print(bobo.walk())
+b = B()
+print(b.)

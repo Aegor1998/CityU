@@ -5,8 +5,9 @@
 class OverloadDemo:
 
     def sum(self, a, b, c=0):
-        s = a+b+c
+        s = a + b + c
         return s
+
 
 od = OverloadDemo()
 
