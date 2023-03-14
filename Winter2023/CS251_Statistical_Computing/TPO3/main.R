@@ -23,6 +23,7 @@ library('rstudioapi')
 cleanData <- function(x) {
   x      <- x[!is.na(x)]
   x      <- x[x != "UNABLE TO DETERMINE"]
+  x      <- x[x != "NOT APPLICABLE"]
   return (x)
 }
 find_max <- function(x) {
@@ -98,15 +99,20 @@ hist_Crash_Overlay <- function (){
 }
 #Primary/Secondary Contr. Graphs (Base)
 PriSecGraphs <- function (){ #Looking for an answer
-  primary   <- data.frame(Year = DATA$Year, Primary = DATA$Primary_Cause)
-  secondary <- data.frame(Year = DATA$Year, Secondary = DATA$Secondary_Cause)
+  YEARS <- unique(DATA$Year)
+  for (i in YEARS){
+    #Primary Cause Graphs
+    primary   <- as.data.frame(find_max(DATA$Primary_Cause[DATA$Year == i]))
+    ggsave(filename = paste("Primary Causes of ", i, ".png"),
+           plot = ggplot(primary, aes(x = Event, y = Freq, fill=Event)) + geom_bar(stat = "identity") +
+           theme(axis.text.x.bottom = element_blank()) + ggtitle(label = paste("Primary Causes of ", i)))
+    #Secondary Cause Graphs
+    secondary <- as.data.frame(find_max(DATA$Secondary_Cause[DATA$Year == i]))
+    ggsave(filename = paste("Secondary Causes of ", i, ".png"),
+           plot = ggplot(secondary, aes(x = Event, y = Freq, fill=Event)) + geom_bar(stat = "identity") +
+           theme(axis.text.x.bottom = element_blank()) + ggtitle(label = paste("Secondary Causes of ", i)))
+    }
 
-  TopNames <- find_max(primary$Primary)
-  TopNames <- frame(TopNames)
-  view(TopNames)
-  Pri_Graph <- ggplot(TopNames, aes(x = Event)) + geom_histogram(color = 'orange', fill = 'red') +
-    ggtitle(label = "Top Primary Causes")
-  Pri_Graph
 }
 #Injuries over time histogram (Base)
 hist_Injuries_Time <- function(){
@@ -211,6 +217,6 @@ DATA <- DATA[DATA$Year != 2023, ]
 
 hist_Crash_Time()
 hist_Crash_Overlay()
-#PriSecGraphs()
+PriSecGraphs()
 hist_Injuries_Time()
 hist_Injuries_Overlay()
