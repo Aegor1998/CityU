@@ -1,10 +1,11 @@
-# Goals:
-# 1) To read the cvs file into the program
-# 2) Put the relevent informtion into a type of list
-# 3) Use the data in the list to find the following things
-#     1) most and least common crash related factors
-#     2) correlations with poputlation and number of crashes
-#     3) correlations with num of crashes and deaths
+# Name      : TPO3_Blake-Kucera_Caleb-Howard_Dhrushal-Gada.R
+# Purpose   : A script to produce the needed graphs
+# Team Mates: Blake Kucera, Caleb Howard, Dhrushal Gada
+# Roles:
+#       Coding      : Blake Kucear
+#       Essay       : Dhrushal Gada
+#       Presentation: Caleb Howard
+
 
 # Installs Needed Packages
 #install.packages("ggplot2")
@@ -13,11 +14,11 @@
 #install.packages("tidyverse")
 
 # Loads needed libaries
-library('ggplot2')
-library('data.table')
-library('dplyr')
-library('scales')
-library('rstudioapi')
+library(package = 'ggplot2')
+library(package = 'data.table')
+library(package = 'dplyr')
+library(package = 'scales')
+library(package = 'rstudioapi')
 
 #General functions
 cleanData <- function(x) {
@@ -30,7 +31,6 @@ find_max <- function(x) {
   Event <- cleanData(x)
   return ((sort(table(Event), decreasing = TRUE)[1:5]))
 }
-
 #Crashes over time histogram (Base)
 hist_Crash_Time <- function(){
   #Events By Year
