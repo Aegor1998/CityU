@@ -1,14 +1,10 @@
-class A:
-
-    def __init__(self, i=0):
-        self.i = i
+ggplot(data.frame(Husband = HEIGHTS$V1, Wife = HEIGHTS$V2), aes(Husband, Wife)) +
+  geom_point() + geom_smooth(method = 'lm', se = FALSE) + ggtitle(label = "Graph with line")
 
 
-class B(A):
 
-    def __init__(self, j=1):
-        self.j = j
-
-
-b = B()
-print(b.)
+ggplot(data.frame(Husband = HEIGHTS$V1, Wife = HEIGHTS$V2), aes(Husband, Wife)) +
+  geom_point(color = 'blue') +
+  geom_abline(slope = coef(lm(V2 ~ V1, data = HEIGHTS))[2],
+              intercept = coef(lm(V2 ~ V1, data = HEIGHTS))[1])  +
+  ggtitle(label = "Graph with line")
