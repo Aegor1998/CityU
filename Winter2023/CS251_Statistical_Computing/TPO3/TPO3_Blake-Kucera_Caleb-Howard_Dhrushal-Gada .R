@@ -5,7 +5,7 @@
 #       Coding      : Blake Kucear
 #       Essay       : Dhrushal Gada
 #       Presentation: Caleb Howard
-
+# if this script is not running make sure to put the data we are pulling from in the same folder
 
 # Installs Needed Packages
 #install.packages("ggplot2")
