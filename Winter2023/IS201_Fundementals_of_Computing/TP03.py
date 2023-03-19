@@ -80,6 +80,7 @@ class Board:
         # Check each row
         for row in self.grid:
             if row.count("X") == 3:
+                print("a")
                 return "X"
             elif row.count("O") == 3:
                 return "O"
@@ -247,10 +248,13 @@ def main():
             board.show(board)
             board = makeTurn(board=board, symbol=player.symbol)
             board.show(board)
-        if i >= 2:
-            win = board.checkWin(board)
-            print("The Winner is ", win, "!")
-            exit()
+        if i > 1:
+            try:
+                win, _ = board.checkWin(board)
+                print("The Winner is ", win, "!")
+                exit()
+            except TypeError:
+                pass
     print("Stalemate")
 
 
